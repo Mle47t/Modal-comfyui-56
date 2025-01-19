@@ -17,7 +17,7 @@ flux = (  # Download image layers to run FLUX_Q8.gguf model
         "comfy --skip-prompt install --nvidia",
     )
     .run_commands(# download the GGUF Q8 model
-    "comfy --skip-prompt model download --url https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q4_K_S.gguf  --relative-path models/unet",
+    "comfy --skip-prompt model download --url https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q8_0.gguf  --relative-path models/unet",
     )
     .run_commands( # gguf node required for q8 model
         "comfy node install https://github.com/city96/ComfyUI-GGUF"
@@ -28,9 +28,6 @@ flux = (  # Download image layers to run FLUX_Q8.gguf model
     .run_commands(  # download the cliper model required to use with GGUF model
         "comfy --skip-prompt model download --url https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors --relative-path models/clip",
         "comfy --skip-prompt model download --url https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors --relative-path models/clip",
-    )
-    .run_commands(  # download the lora anime -- optional you can disbale
-        "comfy --skip-prompt model download --url https://civitai.com/models/640247/mjanimefluxlora?modelVersionId=716064 --relative-path models/loras --set-civitai-api-token [USE YOUR CIVITAI TOKEN]"
     )
     # put down here additional layers to your likings below
     .run_commands( # XLabs ControlNet node 
